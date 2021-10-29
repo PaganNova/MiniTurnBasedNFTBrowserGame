@@ -145,6 +145,7 @@ const SelectCharacter = ({ setCharacterNFT }) => {
         </div>
         {/*<img src={character.imageURI} alt={character.name} />*/}
         <img src={IPFS+character.imageURI} alt={character.name} />
+        console.log(IPFS+character.imageURI);
         <button
           type="button"
           className="character-mint-button"
