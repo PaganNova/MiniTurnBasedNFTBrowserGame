@@ -27,6 +27,41 @@ const App = () => {
     checkIfWalletIsConnected();
   }, []);
 
+  const renderContent = () => {
+    /*
+     * If the app is currently loading, just render out LoadingIndicator
+     */
+    if (isLoading) {
+      return <LoadingIndicator />;
+    }
+    console.log(currentAccount);
+
+
+    if (!currentAccount) {
+      return (
+        <div className="connect-wallet-container">
+          <img
+            src="https://64.media.tumblr.com/tumblr_mbia5vdmRd1r1mkubo1_500.gifv"
+            alt="Monty Python Gif"
+          />
+          <button
+            className="cta-button connect-wallet-button"
+            onClick={connectWalletAction}
+          >
+            Connect Wallet To Get Started
+          </button>
+        </div>
+      );
+    } else if (currentAccount && !characterNFT) {
+      return <SelectCharacter setCharacterNFT={setCharacterNFT} />;
+      /*
+      * If there is a connected wallet and characterNFT, it's time to battle!
+      */
+    } else if (currentAccount && characterNFT) {
+      return <Arena characterNFT={characterNFT} />;
+    }
+  };
+
   // Actions
   const checkIfWalletIsConnected = async () => {
     try {
@@ -47,6 +82,7 @@ const App = () => {
         setCurrentAccount(account);
       } else {
         console.log('No authorized account found');
+        setIsLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -54,37 +90,7 @@ const App = () => {
   };
 
 
-  const renderContent = () => {
-    /*
-     * If the app is currently loading, just render out LoadingIndicator
-     */
-    if (isLoading) {
-      return <LoadingIndicator />;
-    }
-  
-    if (!currentAccount) {
-      return (
-        <div className="connect-wallet-container">
-          <img
-            src="https://64.media.tumblr.com/tumblr_mbia5vdmRd1r1mkubo1_500.gifv"
-            alt="Monty Python Gif"
-          />
-          <button
-            className="cta-button connect-wallet-button"
-            onClick={connectWalletAction}
-          >
-            Connect Wallet To Get Started
-          </button>
-        </div>
-      );
-    } else if (currentAccount && !characterNFT) {
-      return <SelectCharacter setCharacterNFT={setCharacterNFT} />;
-    } else if (currentAccount && characterNFT) {
-      return (
-        <Arena characterNFT={characterNFT} setCharacterNFT={setCharacterNFT} />
-      );
-    }
-  };
+
 
   /*
    * Implement your connectWallet method here
@@ -149,6 +155,8 @@ const App = () => {
       fetchNFTMetadata();
     }
   }, [currentAccount]);
+
+
 
   return (
     <div className="App">
