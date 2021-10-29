@@ -162,8 +162,8 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <p className="header gradient-text">⚔️ Metaverse Slayer ⚔️</p>
-          <p className="sub-text">Team up to protect the Metaverse!</p>
+          <p className="header gradient-text">⚔️ Critterverse Slayer ⚔️</p>
+          <p className="sub-text">Team up to protect the Critterverse!</p>
           {/* This is where our button and image code used to be!
          *	Remember we moved it into the render method.
          */}
