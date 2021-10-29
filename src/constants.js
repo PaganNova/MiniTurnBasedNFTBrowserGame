@@ -11,4 +11,4 @@ const transformCharacterData = (characterData) => {
   };
 };
 
-export { CONTRACT_ADDRESS, transformCharacterData };
+export { CONTRACT_ADDRESS, transformCharacterData, IPFS };
