@@ -1,4 +1,4 @@
-const CONTRACT_ADDRESS = '0xEfcD8e8eF678f65879B049842Ce55d5C9BECB1DD';
+const CONTRACT_ADDRESS = '0xD024BDd84f7F88357bF2cd4D2D98AFdee54B58E7';
 const IPFS = 'https://cloudflare-ipfs.com/ipfs/'
 
 const transformCharacterData = (characterData) => {
