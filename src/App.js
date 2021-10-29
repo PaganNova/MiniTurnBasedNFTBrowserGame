@@ -22,6 +22,11 @@ const App = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    setIsLoading(true);
+    checkIfWalletIsConnected();
+  }, []);
+
   // Actions
   const checkIfWalletIsConnected = async () => {
     try {
@@ -56,7 +61,7 @@ const App = () => {
     if (isLoading) {
       return <LoadingIndicator />;
     }
-
+  
     if (!currentAccount) {
       return (
         <div className="connect-wallet-container">
@@ -110,10 +115,7 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    setIsLoading(true);
-    checkIfWalletIsConnected();
-  }, []);
+
 
   /*
  * Add this useEffect right under the other useEffect where you are calling checkIfWalletIsConnected
